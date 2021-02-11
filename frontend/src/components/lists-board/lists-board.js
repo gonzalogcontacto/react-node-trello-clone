@@ -1,17 +1,24 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import './lists-board.css';
 import TasksList from './tasks-list'
 
-class ListsBoard extends Component {
+export default function ListsBoard(){
     
-    constructor() {
-        super()
-        this.state = {
-            lists: [{"id":1, "name": 'TO DO'}, {"id":2, "name": 'DOING'}, {"id":3, "name": 'DOING'}, {"id":4, "name": 'DOING'}]
-        }
-    }
+    const [lists, setLists] = useState([]);
 
-    render() {
+    useEffect(() => {
+        async function fetchData() {
+            const ApiResponse = await fetch("http://localhost:5000/api/list")
+            const json = await ApiResponse.json();
+            setLists(json);
+        }
+        fetchData();
+    }, [])
+
+        if(!lists) {
+            return <div>Loading...</div>
+        }
+
         return (
             <>  
                 <h2>Board para GeeksHubs Academy</h2>
@@ -19,11 +26,8 @@ class ListsBoard extends Component {
                     <input></input><button> Añadir lista</button>
                 </div>
                 <ul>
-                    {this.state.lists.map(elm => <TasksList key={elm.id} name={elm.name}/> )}
+                    {lists.map(list => <TasksList key={list.id} list={list} /> )}
                 </ul>
             </>
         )
-    }
 }
-
-export default ListsBoard;
