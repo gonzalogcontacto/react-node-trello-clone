@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './lists-board.css';
 import TasksList from './tasks-list'
+import API from '../../helper/api';
 
 export default function ListsBoard(){
     
     const [lists, setLists] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
-            const ApiResponse = await fetch("http://localhost:5000/api/list")
-            const json = await ApiResponse.json();
-            setLists(json);
-        }
-        fetchData();
+        API.lists.getListsOfBoard()
+            .then(result => {
+                setLists(result);  
+            });
     }, [])
 
         if(!lists) {
