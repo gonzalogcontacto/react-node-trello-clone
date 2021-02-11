@@ -11,7 +11,7 @@ export default function TasksList(List){
         .then(result => {
             setTasks(result);  
         });
-    }, [])
+    }, [List.list.id])
 
     if(!tasks) {
         return <div>Loading...</div>
