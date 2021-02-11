@@ -2,20 +2,23 @@ import React, { useState, useEffect } from 'react'
 import TaskCard from './task-card'
 import API from '../../helper/api';
 
-export default function TasksList(List){
+const TasksList = List => {
+//export default function TasksList(List){
 
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
+
         API.lists.getTasksOfList(List.list.id)
         .then(result => {
             setTasks(result);  
         });
-    }, [List.list.id])
+    }, [])
 
     if(!tasks) {
         return <div>Loading...</div>
     }
+
 
     return(
         <div className="list-card">
@@ -29,3 +32,4 @@ export default function TasksList(List){
         </div>
     )
 }
+export default TasksList
