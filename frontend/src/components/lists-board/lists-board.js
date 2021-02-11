@@ -4,19 +4,20 @@ class ListsBoard extends Component {
     constructor() {
         super()
         this.state = {
-            lists: [{"name": 'TO DO'}, {"name": 'DOING'}]
+            lists: [{"id":1, "name": 'TO DO'}, {"id":2, "name": 'DOING'}]
         }
     }
 
     render() {
         return (
-            <>
+            <>  
+                <h2>Listas del Board por defecto</h2>
                 <ul>
-                    {lists.map(elm => <div key={elm.id} {...elm}/>)}
+                    {this.state.lists.map(elm => <div key={elm.id} {...elm}/>)}
                 </ul>
             </>
         )
     }
 }
 
-export default MoviesList;
+export default ListsBoard;
