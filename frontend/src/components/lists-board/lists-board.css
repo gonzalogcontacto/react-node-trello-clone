@@ -1,0 +1,11 @@
+h2{
+    padding: 30px;
+    margin: 0px;
+}
+.list-card {
+    width: calc(25% - 53px);
+    display: inline-block;
+    border: 1px solid;
+    padding: 10px;
+    margin: 10px;
+}
