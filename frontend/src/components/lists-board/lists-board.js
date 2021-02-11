@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import './lists-board.css';
+import TasksList from './tasks-list'
 
 class ListsBoard extends Component {
+    
     constructor() {
         super()
         this.state = {
@@ -12,9 +14,12 @@ class ListsBoard extends Component {
     render() {
         return (
             <>  
-                <h2>Listas del Board por defecto</h2>
+                <h2>Board para GeeksHubs Academy</h2>
+                <div>
+                    <input></input><button> Añadir lista</button>
+                </div>
                 <ul>
-                    {this.state.lists.map(elm => <div key={elm.id} className="list-card"  /> )}
+                    {this.state.lists.map(elm => <TasksList key={elm.id} name={elm.name}/> )}
                 </ul>
             </>
         )
