@@ -1,30 +1,31 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import TaskCard from './task-card'
+import API from '../../helper/api';
 
-class TasksList extends Component {
-    
-    constructor() {
-        super()
+export default function TasksList(List){
 
-        this.state = {
-            tasks: [{"id":1, "name": 'Task 1'}, {"id":2, "name": 'Task 2'}]
-        }
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        API.lists.getTasksOfList(List.list.id)
+        .then(result => {
+            setTasks(result);  
+        });
+    }, [List.list.id])
+
+    if(!tasks) {
+        return <div>Loading...</div>
     }
 
-    render() {
-        return(
-            <div className="list-card">
-                <h5>{this.props.name}</h5>
-                <ul>
-                    {this.state.tasks.map(elm => <TaskCard key={elm.id} name={elm.name}/> )}
-                </ul>
-                <div>
-                    <input></input><button> Añadir Tarea</button>
-                </div>
+    return(
+        <div className="list-card">
+            <h5>{List.list.name}</h5>
+            <ul>
+                {tasks.map(elm => <TaskCard key={elm.id} name={elm.name}/> )}
+            </ul>
+            <div>
+                <input></input><button> Añadir Tarea</button>
             </div>
-        )
-            
-    }
+        </div>
+    )
 }
-
-export default TasksList
