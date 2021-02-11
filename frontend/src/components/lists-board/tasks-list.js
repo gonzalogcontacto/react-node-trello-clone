@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import TaskCard from './task-card'
 
 class TasksList extends Component {
     
     constructor() {
         super()
+
+        this.state = {
+            tasks: [{"id":1, "name": 'Task 1'}, {"id":2, "name": 'Task 2'}]
+        }
     }
 
     render() {
@@ -11,8 +16,7 @@ class TasksList extends Component {
             <div className="list-card">
                 <h5>{this.props.name}</h5>
                 <ul>
-                    <li>Task 1</li>
-                    <li>Task 2</li>
+                    {this.state.tasks.map(elm => <TaskCard key={elm.id} name={elm.name}/> )}
                 </ul>
             </div>
         )
