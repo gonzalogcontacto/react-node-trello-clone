@@ -9,3 +9,7 @@ div{
     padding: 10px;
     margin: 10px;
 }
+
+.list-card input {
+    width: -webkit-fill-available;
+}

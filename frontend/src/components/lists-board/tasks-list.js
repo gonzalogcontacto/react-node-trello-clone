@@ -18,6 +18,9 @@ class TasksList extends Component {
                 <ul>
                     {this.state.tasks.map(elm => <TaskCard key={elm.id} name={elm.name}/> )}
                 </ul>
+                <div>
+                    <input></input><button> Añadir Tarea</button>
+                </div>
             </div>
         )
             
