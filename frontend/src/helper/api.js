@@ -6,6 +6,11 @@ const API = {
         const ApiResponse = await fetch(`${baseURL}/list`)
         const json = await ApiResponse.json();
         return json;
+    },
+    async getTasksOfList (id){
+        const ApiResponse = await fetch(`${baseURL}/list/${id}/tasks`)
+        const json = await ApiResponse.json();
+        return json;
     }
   },
 };

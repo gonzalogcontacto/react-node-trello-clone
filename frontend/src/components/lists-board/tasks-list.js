@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import TaskCard from './task-card'
+import API from '../../helper/api';
 
 export default function TasksList(List){
 
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
-            const ApiResponse = await fetch(`http://localhost:5000/api/list/${List.list.id}/tasks`)
-            const json = await ApiResponse.json();
-            setTasks(json);
-        }
-        fetchData();
+        API.lists.getTasksOfList(List.list.id)
+        .then(result => {
+            setTasks(result);  
+        });
     }, [])
 
     if(!tasks) {
