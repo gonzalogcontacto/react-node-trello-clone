@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { list } from "../models/list.model";
+import { task } from '../models/task.model';
 
 class ListController {
 
@@ -22,25 +23,14 @@ class ListController {
     }
 
     public async detail(req: Request, res: Response) {
-        //res.sendStatus(200);
+
         try{
-            const lists: Array<Object> | null = [
-                {
-                    "id": 1,
-                    "name": "testList1"
-                },
-                {
-                    "id": 2,
-                    "name": "testList2"
-                }
-            ];
-/*
-            if(req.params.id != "2"){
-                res.json([]);
-            }
-*/
-            if(lists) {
-                res.json(lists);
+            const tasks: Array<Object>  = await task.find({
+                list: req.params.id
+            });
+
+            if(tasks) {
+                res.json(tasks);
             }else{
                 res.sendStatus(404);
             }

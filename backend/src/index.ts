@@ -1,5 +1,6 @@
 import express from 'express';
 import { listRoutes } from './routes/list.routes';
+import { taskRoutes } from './routes/task.routes';
 import cors from 'cors';
 require('dotenv').config();
 
@@ -23,7 +24,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(express.json()); // Can read JSON from body request params
 
 // Loading routes
-app.use('/api', listRoutes);
+app.use('/api/list', listRoutes);
+app.use('/api/task', taskRoutes);
 
 // Starting the server
 app.listen(app.get('port'), () => {
