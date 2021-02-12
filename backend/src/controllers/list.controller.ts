@@ -47,7 +47,7 @@ class ListController {
             const newList = new list(req.body);
             await newList.save();
 
-            res.sendStatus(202);
+            res.json(newList);
 
         } catch (error) {
             console.log(error);
