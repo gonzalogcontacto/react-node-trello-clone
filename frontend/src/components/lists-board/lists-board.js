@@ -29,11 +29,13 @@ export default function ListsBoard(){
 
     return (
         <>  
-            <h2>Board para GeeksHubs Academy</h2>
+            <div className="title">
+                <h2> Board para GeeksHubs Academy</h2>
+            </div>
             <AddListForm addList={addList}/>
-            <ul>
+            <div className="list-cards">
                 {lists.map(list => <TasksList key={list._id} list={list} /> )}
-            </ul>
+            </div>
         </>
     )
 }

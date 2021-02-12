@@ -10,7 +10,7 @@ const AddTaskForm = props => {
 	}
 
 	return (
-		<form
+		<form className="addTask"
 			onSubmit={event => {
 				event.preventDefault()
 				if (!task.name) return
@@ -22,8 +22,8 @@ const AddTaskForm = props => {
 			
 			}}
 		>
-			<input type="text" name="name" value={task.name} onChange={handleInputChange} />
-			<button>Añadir Tarea</button>
+			<input type="text" name="name" placeholder="Introduce un titulo" value={task.name} onChange={handleInputChange} className="form__input"/>
+			<button>Añadir</button>
 		</form>
 	)
 }
