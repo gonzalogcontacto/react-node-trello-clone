@@ -1,0 +1,72 @@
+
+body {
+  text-align: center;
+  min-height: 100vh;
+  background: rgb(0,198,255);
+  background: linear-gradient(
+    0deg
+    , rgb(99 184 209) 4%, rgb(56 67 121) 94%);font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-size: 1.2rem;
+}
+.logo {
+  max-width: 50px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.title h2{
+  text-align: center;
+  color: white;
+}
+header {
+  background-color: #fdfdfd;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.addList, .addTask{
+  display: flex;
+  align-content: baseline;
+  align-items: center;
+  justify-content: center;
+  max-width: min-content;
+  margin: 0 auto;
+}
+.addList button{
+  min-width: 110px;
+  height: 40px;
+  background: #333;
+  color: white;
+  border: none;
+  height: 36px;
+}
+.addTask button{
+    min-width: 30px;
+    height: 40px;
+    background: #333;
+    color: white;
+    border: none;
+    height: 34px;
+}
+
+.addTask .form__input{
+  max-width: 160px;
+}
+
+.form__input {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1rem;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  max-width: 230px;
+  display: block;
+}
