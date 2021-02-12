@@ -31,6 +31,23 @@ const API = {
         return json;
     }
   },
+  tasks: {
+    async createTask (task){
+        const ApiResponse = await fetch(`${baseURL}/list`, {
+            method: 'POST', 
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(task)}
+        );
+
+        const json = await ApiResponse.json();
+        console.log('createTask', json)
+
+        return json;
+    },
+    }
 };
 
 export default API;
