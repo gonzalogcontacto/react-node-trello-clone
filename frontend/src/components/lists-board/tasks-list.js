@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import TaskCard from './task-card'
 import API from '../../helper/api';
+import TaskCard from './task-card'
+import AddTaskForm from './add-task-form';
 
 const TasksList = List => {
 //export default function TasksList(List){
@@ -15,6 +16,15 @@ const TasksList = List => {
         });
     }, [])
 
+       
+	const addTask = task => {
+        task.id = tasks.length + 1
+        API.tasks.createTask(task)
+        .then(taskRes => {
+            setTasks([ ...tasks, taskRes ])
+        });
+	}
+
     if(!tasks) {
         return <div>Loading...</div>
     }
@@ -26,9 +36,7 @@ const TasksList = List => {
             <ul>
                 {tasks.map(elm => <TaskCard key={elm.id} name={elm.name}/> )}
             </ul>
-            <div>
-                <input></input><button> Añadir Tarea</button>
-            </div>
+            <AddTaskForm  addTask={addTask}/>
         </div>
     )
 }
