@@ -4,21 +4,19 @@ import TaskCard from './task-card'
 import AddTaskForm from './add-task-form';
 
 const TasksList = List => {
-//export default function TasksList(List){
 
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-
-        API.lists.getTasksOfList(List.list.id)
+        API.lists.getTasksOfList(List.list._id)
         .then(result => {
             setTasks(result);  
         });
-    }, [])
+    }, [List.list._id])
 
        
 	const addTask = task => {
-        task.id = tasks.length + 1
+        task.list = List.list._id;
         API.tasks.createTask(task)
         .then(taskRes => {
             setTasks([ ...tasks, taskRes ])
@@ -29,12 +27,13 @@ const TasksList = List => {
         return <div>Loading...</div>
     }
 
+    console.log(List);
 
     return(
         <div className="list-card">
             <h5>{List.list.name}</h5>
             <ul>
-                {tasks.map(elm => <TaskCard key={elm.id} name={elm.name}/> )}
+                {tasks.map(elm => <TaskCard key={elm._id} name={elm.name}/> )}
             </ul>
             <AddTaskForm  addTask={addTask}/>
         </div>

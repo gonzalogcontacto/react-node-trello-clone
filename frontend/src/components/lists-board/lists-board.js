@@ -16,15 +16,12 @@ export default function ListsBoard(){
             });
     }, [])
     
-   
 	const addList = list => {
-        list.id = lists.length + 1
         API.lists.createList(list)
         .then(listRes => {
             setLists([ ...lists, listRes ])
         });
 	}
-
 
     if(!lists) {
         return <div>Loading...</div>
@@ -35,7 +32,7 @@ export default function ListsBoard(){
             <h2>Board para GeeksHubs Academy</h2>
             <AddListForm addList={addList}/>
             <ul>
-                {lists.map(list => <TasksList key={list.id} list={list} /> )}
+                {lists.map(list => <TasksList key={list._id} list={list} /> )}
             </ul>
         </>
     )
