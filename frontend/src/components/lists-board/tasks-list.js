@@ -30,11 +30,11 @@ const TasksList = List => {
     console.log(List);
 
     return(
-        <div className="list-card">
-            <h5>{List.list.name}</h5>
-            <ul>
+        <div className="list-wrapper">
+            <h5 className="list-header">{List.list.name}</h5>
+            <div className="list-cards">
                 {tasks.map(elm => <TaskCard key={elm._id} name={elm.name}/> )}
-            </ul>
+            </div>
             <AddTaskForm  addTask={addTask}/>
         </div>
     )

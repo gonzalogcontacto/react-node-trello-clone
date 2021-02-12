@@ -10,7 +10,7 @@ const AddListForm = props => {
 	}
 
 	return (
-		<form
+		<form className="addList"
 			onSubmit={event => {
 				event.preventDefault()
 				if (!list.name) return
@@ -22,7 +22,7 @@ const AddListForm = props => {
 			
 			}}
 		>
-			<input type="text" name="name" value={list.name} onChange={handleInputChange} />
+			<input type="text" name="name" value={list.name} onChange={handleInputChange} className="form__input" />
 			<button>Añadir Lista</button>
 		</form>
 	)
