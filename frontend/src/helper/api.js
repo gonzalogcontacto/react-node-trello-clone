@@ -13,6 +13,8 @@ const API = {
     async getTasksOfList (id){
         const ApiResponse = await fetch(`${baseURL}/list/${id}/tasks`)
         const json = await ApiResponse.json();
+        console.log('getTasksOfList', json)
+
         return json;
     },
     async createList (list){
@@ -33,7 +35,8 @@ const API = {
   },
   tasks: {
     async createTask (task){
-        const ApiResponse = await fetch(`${baseURL}/list`, {
+        console.log('CREATE TASK', task);
+        const ApiResponse = await fetch(`${baseURL}/task`, {
             method: 'POST', 
             headers: {
                 'Accept': 'application/json',
