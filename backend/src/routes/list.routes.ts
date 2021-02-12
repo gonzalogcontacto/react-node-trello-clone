@@ -7,7 +7,9 @@ class ListRoutes {
 
     constructor(){
         this.router.get('/list', ListController.index);
-        this.router.get('/list/:id', ListController.detail);
+        this.router.get('/list/:id/tasks', ListController.detail);
+        this.router.post('/list', ListController.create);
+
     }
 }
 
